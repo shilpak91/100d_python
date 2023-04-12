@@ -14,6 +14,6 @@
 
 # print(len(input("What is your name ?")))
 
-name = input("What is your name ?")
-length = len(name)
-print(f"Your name is {name} and length of name is {length}")
+# name = input("What is your name ?")
+# length = len(name)
+# print(f"Your name is {name} and length of name is {length}")
