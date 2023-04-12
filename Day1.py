@@ -16,4 +16,4 @@
 
 name = input("What is your name ?")
 length = len(name)
-print("Your name is {} and length is {}")
+print(f"Your name is {name} and length of name is {length}")
