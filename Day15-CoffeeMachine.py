@@ -77,8 +77,6 @@ def check_resources(user_input):
             print(f"Making your {user_input} !!")
             return True
 
-
-
 # print(f"check_resource_flag : {check_resource_flag}")
 
 def refactor_resources(user_input):
