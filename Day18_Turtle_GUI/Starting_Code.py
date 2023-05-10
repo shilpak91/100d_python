@@ -1,11 +1,11 @@
-from turtle import Turtle,Screen
+from turtle import Turtle, Screen
 import random
 
 timmy = Turtle()
 timmy.shape("turtle")
 timmy.color("red")
 screen = Screen()
-screen.colormode(255) # See  documentation
+screen.colormode(255)
 
 # Moving Turtle in a square
 # for i in range(4): 
@@ -31,19 +31,28 @@ screen.colormode(255) # See  documentation
 
 
 
-# Draw random line and random color and ransom direction
+# Draw random walk
 
-timmy.pensize(15)
+# timmy.pensize(15)
+# timmy.speed("fastest")
 
-for i in range(0,100):
-    timmy.pencolor((random.randint(0,255),random.randint(0,255),random.randint(0,255)))
-    coin = random.randrange(0,2)
-    if coin ==0:
-        timmy.right(90)
-    else:
-        timmy.left(90)
-    timmy.forward(10)
+# direction = [0,90,180,270]
 
+# for i in range(0,200):
+#     timmy.pencolor((random.randint(0,255),random.randint(0,255),random.randint(0,255)))
+#     timmy.setheading(random.choice(direction))
+#     timmy.forward(30)
+
+# Draw a Spirograph
+
+timmy.speed("fastest")
+def draw_spirograph(gap):
+    for i in range(int(360/gap)):
+        timmy.pencolor((random.randint(0,255),random.randint(0,255),random.randint(0,255)))
+        timmy.circle(100)
+        timmy.left(gap)
+
+draw_spirograph(5)
 
 screen.exitonclick()
 
