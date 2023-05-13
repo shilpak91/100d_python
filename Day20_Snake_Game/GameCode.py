@@ -1,6 +1,6 @@
 from turtle import Screen,Turtle
 import time
-import Snake
+from snake_prop import Snake
 
 screen = Screen()
 screen.setup(width=600,height=600)
