@@ -1,6 +1,6 @@
 from turtle import Screen,Turtle
 import time
-from snake_prop import Snake
+import snake_prop
 
 screen = Screen()
 screen.setup(width=600,height=600)
@@ -8,7 +8,7 @@ screen.bgcolor("black")
 screen.title("Snake Game")
 screen.tracer(0)
 
-snake = Snake()
+snake = snake_prop.Snake()
 
 screen.listen()
 screen.onkey(snake.up,"Up")
