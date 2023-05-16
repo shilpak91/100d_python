@@ -9,5 +9,5 @@ class Scoreboard(Turtle):
         self.goto(x=0,y=280)
         self.hideturtle()
         self.write("Score : ",move=False, align='left', font=('Arial', 8, 'normal'))
-        self.goto(x=30,y=280)
+        self.goto(x=50,y=280)
         self.write(self.score,move=False, align='left', font=('Arial', 8, 'normal'))
