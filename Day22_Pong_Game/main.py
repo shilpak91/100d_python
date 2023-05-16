@@ -11,6 +11,7 @@ r_paddle = Turtle()
 r_paddle.shape("square")
 r_paddle.shapesize(stretch_wid=5,stretch_len=1)
 r_paddle.color("white")
+r_paddle.penup()
 r_paddle.goto(x=350,y=0)
 
 
