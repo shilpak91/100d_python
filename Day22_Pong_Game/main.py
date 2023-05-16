@@ -2,7 +2,7 @@ from turtle import Screen
 from paddle import Paddle
 from ball import Ball
 import time
-from scoreboard import Scoreboard
+# from scoreboard import Scoreboard
 
 STARTING_POSITIONS = [(350,0),(-350,0)]
 
