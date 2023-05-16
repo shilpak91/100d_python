@@ -1,6 +1,7 @@
 from turtle import Screen
 from paddle import Paddle
 from ball import Ball
+import time
 
 STARTING_POSITIONS = [(350,0),(-350,0)]
 
@@ -26,7 +27,9 @@ screen.onkey(l_paddle.down,"s")
 
 game_is_on = True
 while game_is_on:
+    time.sleep(1)
     screen.update()
+    ball.move()
 
 
 screen.exitonclick()
