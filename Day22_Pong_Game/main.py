@@ -9,6 +9,7 @@ screen.bgcolor("black")
 screen.title("Pong Game")
 screen.tracer(0)
 
+
 r_paddle = Paddle(STARTING_POSITIONS[0])
 l_paddle = Paddle(STARTING_POSITIONS[1])
 
