@@ -2,6 +2,7 @@ from turtle import Screen
 from paddle import Paddle
 from ball import Ball
 import time
+from scoreboard import Scoreboard
 
 STARTING_POSITIONS = [(350,0),(-350,0)]
 
@@ -39,6 +40,18 @@ while game_is_on:
 
     if ball.distance(r_paddle) < 50 and ball.xcor() > 320 or ball.distance(l_paddle) < 50 and ball.xcor() < -320:
         ball.bounce_x()
+
+    # detect when r paddle misses
+
+    if ball.xcor() > 380:
+        ball.reset_position()
+
+
+    # detect when l paddle misses
+
+    if ball.xcor() < -380:
+        ball.reset_position()
+
 
 
 screen.exitonclick()
