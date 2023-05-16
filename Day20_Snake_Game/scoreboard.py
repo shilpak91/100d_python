@@ -8,4 +8,6 @@ class Scoreboard(Turtle):
         self.penup()
         self.goto(x=0,y=280)
         self.hideturtle()
-        self.write("Score : {self.score}",move=False, align='left', font=('Arial', 8, 'normal'))
+        self.write("Score : ",move=False, align='left', font=('Arial', 8, 'normal'))
+        self.goto(x=30,y=280)
+        self.write(self.score,move=False, align='left', font=('Arial', 8, 'normal'))
