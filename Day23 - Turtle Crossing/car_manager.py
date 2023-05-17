@@ -4,13 +4,13 @@ import random
 COLORS = ["red", "orange", "yellow", "green", "blue", "purple"]
 STARTING_MOVE_DISTANCE = 5
 MOVE_INCREMENT = 10
-Y_COR = random.randrange(-250,250)
 X_COR = 300
 
 class CarManager():
 
     def __init__(self):
         self.all_cars = []
+        self.car_speed = STARTING_MOVE_DISTANCE
 
     
     def create_car(self):
@@ -20,14 +20,12 @@ class CarManager():
             new_car.shapesize(stretch_wid=1,stretch_len=2)
             new_car.color(random.choice(COLORS))
             new_car.penup()
-            new_car.goto(X_COR,Y_COR)
-            new_car.setheading(180)
-            new_car.move_speed = 0.1
+            new_car.goto(X_COR,random.randrange(-250,250))
             self.all_cars.append(new_car)
     
     def move_cars(self):
         for car in self.all_cars:
-            car.backward(STARTING_MOVE_DISTANCE)
+            car.backward(self.car_speed)
     
     def speed_up(self):
-        self.move_speed *= 0.9
+        self.car_speed += MOVE_INCREMENT

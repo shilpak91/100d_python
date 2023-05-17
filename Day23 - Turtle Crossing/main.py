@@ -27,9 +27,16 @@ while game_is_on:
     car_manager.create_car()
     car_manager.move_cars()
 
+    # Detect turtle and cars collision
+    for car in car_manager.all_cars:
+        if car.distance(turtle) < 20:
+            scoreboard.game_over()
+            game_is_on = False
+
     # Has turtle reach the finish line
-    if turtle.ycor() ==280:
+    if turtle.is_at_finish_line():
         turtle.reset_position()
+        car_manager.speed_up()
         scoreboard.update_level()
 
 
