@@ -18,5 +18,6 @@ class Player(Turtle):
     def up(self):
         new_y = self.ycor() + 10
         self.goto(0,new_y)
-        if self.ycor() == 280:
-            self.goto(STARTING_POSITION)
+        
+    def reset_position(self):
+        self.goto(STARTING_POSITION)

@@ -10,15 +10,20 @@ screen.bgcolor("white")
 screen.tracer(0)
 
 turtle = Player()
+scoreboard = Scoreboard()
 
 screen.listen()
 screen.onkey(turtle.up,"Up")
 
 
 game_is_on = True
+
 while game_is_on:
     time.sleep(0.1)
     screen.update()
+    if turtle.ycor() ==280:
+        turtle.reset_position()
+        scoreboard.update_score()
 
 
 
