@@ -10,9 +10,9 @@ class Scoreboard(Turtle):
         self.color("white")
         self.penup()
         self.hideturtle()
-        self.write_score()
         with open("Day20-21_Snake_Game/data.txt") as data:
             self.high_score = int(data.read())
+        self.write_score()
 
     def write_score(self):
         self.clear()
