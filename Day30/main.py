@@ -68,6 +68,23 @@ def add_button():
         messagebox.showinfo(title="Oops",message="Please dont leave any fields empty!!")
 
 
+# ---------------------------- Search Password ------------------------------- #
+
+def find_password():
+
+    website = website_input.get()
+    email = email_input.get()
+
+
+    with open("Day30\\data.json",mode="r") as data_file:
+        data = json.load(data_file)
+        password = data[website][email]
+
+        messagebox.showinfo(title="Information",message=f"Website : {website}\n Email: {email}\n Password: {password}")
+
+
+
+
 # ---------------------------- UI SETUP ------------------------------- #
 
 window = Tk()
@@ -94,8 +111,8 @@ pass_label.grid(row=3,column=0)
 
 # Entry
 
-website_input = Entry(width=57)
-website_input.grid(row=1,column=1,columnspan=2)
+website_input = Entry(width=32)
+website_input.grid(row=1,column=1)
 website_input.focus()
 
 
@@ -113,5 +130,8 @@ pass_button.grid(row=3,column=2)
 
 add_button = Button(text="Add",width=48,command=add_button)
 add_button.grid(row=4,column=1,columnspan=2)
+
+search_button = Button(text="Search",width=20,command=find_password)
+search_button.grid(row=1,column=2)
 
 window.mainloop()
