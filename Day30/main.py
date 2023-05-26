@@ -75,14 +75,18 @@ def find_password():
     website = website_input.get()
     email = email_input.get()
 
+    try:
+        with open("Day30\\data.json",mode="r") as data_file:
+            data = json.load(data_file)
+            password = data[website][email]
 
-    with open("Day30\\data.json",mode="r") as data_file:
-        data = json.load(data_file)
-        password = data[website][email]
-
-        messagebox.showinfo(title="Information",message=f"Website : {website}\n Email: {email}\n Password: {password}")
-
-
+            messagebox.showinfo(title="Information",message=f"Website : {website}\n Email: {email}\n Password: {password}")
+    
+    except FileNotFoundError:
+        messagebox.showinfo(title="Warning",message="File not found, please add data to create a file!!")
+    
+    except KeyError:
+        messagebox.showinfo(title="Warning",message=f"{website} not found , please add data  !!")
 
 
 # ---------------------------- UI SETUP ------------------------------- #
