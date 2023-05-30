@@ -113,3 +113,4 @@ response = requests.get(url="http://opentdb.com/api.php",params=parameters)
 response.raise_for_status() # Gives error message
 
 question_data = response.json()["results"]
+# print(question_data)
