@@ -25,10 +25,17 @@ data_list = list(data["Time Series (60min)"].keys())
 yes_closing_price = float(data["Time Series (60min)"][data_list[0]]["4. close"])
 dfy_closing_price = float(data["Time Series (60min)"][data_list[16]]["4. close"])
 
-value_change = round((yes_closing_price - dfy_closing_price)/yes_closing_price * 100,2)
+value_change = round((yes_closing_price - dfy_closing_price)/yes_closing_price * 100,2) 
+if value_change > 0:
+    value_change_str = (f"🔺" + str(value_change) + "%")
+else:
+    value_change_str = (f"🔻" + str(value_change) + "%")
+
 
 if value_change > 3:
-    print("Get News")
+    pass
+    # print("Get News")
+    # get news below and send email
 
 
 ## STEP 2: Use https://newsapi.org
@@ -41,10 +48,21 @@ result = requests.get(news_url)
 data_news = result.json()
 top_news = data_news["articles"][0:3]
 
+final_news = ""
+
 for news in top_news:
+
     news_title = news["title"]
     news_desc = news["description"]
-    print(f"Headline : {news_title} Brief : {news_desc}")
+    news = (f"""
+    {COMPANY_NAME} : {value_change_str}
+    Headline : {news_title} 
+    Brief : {news_desc}
+    """)
+
+    final_news += news
+
+print(final_news)
 
 
 
