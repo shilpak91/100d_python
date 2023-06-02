@@ -1,6 +1,11 @@
 import requests
 import datetime as dt
 
+import smtplib
+
+my_email = "shilpakraichpython@gmail.com"
+my_password = "cvraeiwsbakyhbdk"
+
 STOCK = "TSLA"
 COMPANY_NAME = "Tesla Inc"
 STOCK_API = "9DWX7W9Q64YQNBC4"
@@ -32,12 +37,6 @@ else:
     value_change_str = (f"🔻" + str(value_change) + "%")
 
 
-if value_change > 3:
-    pass
-    # print("Get News")
-    # get news below and send email
-
-
 ## STEP 2: Use https://newsapi.org
 # Instead of printing ("Get News"), actually get the first 3 news pieces for the COMPANY_NAME. 
 # 9a60fcfe6cb5482f90583ec933f631c2
@@ -64,6 +63,16 @@ for news in top_news:
 
 print(final_news)
 
+
+if value_change > 3:
+    # print("Get News")
+    # get news below and send email
+    with smtplib.SMTP("smtp.gmail.com",port=587) as connection:
+        connection.starttls()
+        connection.login(user=my_email,password=my_password)
+        connection.sendmail(from_addr=my_email,
+                            to_addrs="shilpakraich91@gmail.com",
+                            msg=f"Subject: {COMPANY_NAME} Alert\n\n {final_news}")
 
 
 ## STEP 3: Use https://www.twilio.com
