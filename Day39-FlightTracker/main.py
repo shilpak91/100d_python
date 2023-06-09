@@ -8,10 +8,12 @@ data = dm.DataManager()
 dest_data = data.get_destination_data()
 flight_search = fs.FlightSearch()
 
+# print(dest_data)
+
 ORIGIN_CITY_IATA = "LON"
 
 
-city_code_check = {i["city"]:{"iataCode": i["iataCode"],"row_num" : i["id"]} for i in dest_data}
+city_code_check = {i["city"]:{"iataCode": i["iataCode"],"row_num" : i["id"],"min_price" : i["lowestPrice"]} for i in dest_data}
 # print(city_code_check)
 
 for city in city_code_check:
@@ -31,3 +33,12 @@ for destination in dest_data:
         from_time=tomorrow,
         to_time=six_month_from_today
     )
+    if flight.price < destination["lowestPrice"]:
+        print(f"""Price : {flight.price}
+        Departure City Name : {flight.origin_city}
+        Departure Airport IATA Code : {flight.origin_airport}
+        Arrival City Name : {flight.destination_city}
+        Arrival Airport IATA Code : {flight.destination_airport}
+        Outbound Date : {flight.out_date}
+        Inbound Date : {flight.return_date}
+        """)
