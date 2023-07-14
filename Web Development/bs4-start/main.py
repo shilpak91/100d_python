@@ -1,5 +1,7 @@
 from bs4 import BeautifulSoup
 
+import requests
+
 with open("/Users/shilpak/Documents/Code100/100d_python/Web Development/bs4-start/website.html") as file:
     contents = file.read()
 
