@@ -25,30 +25,14 @@ top_song_artist = soup.select("li ul li span")
 
 song_titles = [song.getText().strip() for song in top_songs]
 song_artist = [artist.getText().strip() for artist in top_song_artist][::7]
-# print(song_titles)
-# print(song_artist)
 
 song_artist_dict = {}
 
 for i in range(len(song_artist)):
     song_artist_dict[song_titles[i]]=song_artist[i]
 
-print(song_artist_dict)
+# print(song_artist_dict)
 
-# with open ("text.txt",mode="w") as file:
-#     file.write(f"{top_song_artist}")
-# print("********************************************************************************")
-# print(top_song_artist[0].h3.getText())
-# print(top_song_artist[0].span.getText())
-
-# top_songs_list = [tag.li.h3.getText() for tag in top_song_artist]
-# print(top_songs_list)
-
-# for i in top_song_artist:
-#     print(i)
-
-# # top_songs_list = {item.h3.getText():item.span.getText() for item in top_song_artist}
-# print(top_songs_list)
 
 sp = spotipy.Spotify(
     auth_manager=SpotifyOAuth(
@@ -58,7 +42,7 @@ sp = spotipy.Spotify(
         client_secret=CLIENT_SECRET,
         show_dialog=True,
         cache_path="token.txt",
-        username="31DEWJBRIV4vpucdlfby23ZGSSDA", 
     )
 )
-# user_id = sp.current_user()["id"]
+user_id = sp.current_user()["id"]
+print(user_id)
