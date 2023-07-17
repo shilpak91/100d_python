@@ -2,7 +2,8 @@ from bs4 import BeautifulSoup
 import requests
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
-# import PrettyPrinter
+from pprint import pprint
+
 
 
 CLIENT_ID = "98a743c51619412b937fdda410abee13"
@@ -12,9 +13,9 @@ REDIRECT_URI = "https://open.spotify.com/"
 scope = "playlist-modify-private"
 
 song_website = "https://www.billboard.com/charts/hot-100/"
-# date = input ("Which year do you want to travel > Type the date in this format YYYY-MM-DD:")
+date = input ("Which year do you want to travel > Type the date in this format YYYY-MM-DD:")
 
-response = requests.get("https://www.billboard.com/charts/hot-100/2000-08-12",verify=False)
+response = requests.get(f"https://www.billboard.com/charts/hot-100/{date}")
 song_website_html = response.text
 # print(song_website_html)
 
@@ -45,4 +46,21 @@ sp = spotipy.Spotify(
     )
 )
 user_id = sp.current_user()["id"]
-print(user_id)
+
+# print(user_id)
+
+song_uri=[]
+for (song , artist) in song_artist_dict.items():
+    # print(song)
+    # print(artist)
+    try:
+        result = sp.search(q=f"track:{song} artist:{artist}",limit=10,offset=0,type="track",market=None)
+        song_uri.append(result["tracks"]["items"][0]["id"])
+    except:
+        pass
+
+print(f"Number of songs found : {len(song_uri)}")
+
+playlist = sp.user_playlist_create(user=user_id,name=f"{date} Billboard 100",public=False)
+sp.playlist_add_items(playlist_id=playlist["id"],items=song_uri)
+print(f"New playlist {date} Billoard 100 created on spotify")
