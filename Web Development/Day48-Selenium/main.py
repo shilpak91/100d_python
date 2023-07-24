@@ -16,12 +16,6 @@ driver.get("http://orteil.dashnet.org/experiments/cookie/")
 
 cookie = driver.find_element(By.ID,value="cookie")
 
-# start_time = datetime.now()
-# end_time = start_time + timedelta(seconds=5)
-
-# start_time = start_time.strftime("%H:%M:%S")
-# end_time = end_time.strftime("%H:%M:%S")
-
 timeout = time.time() + 5
 five_min = time.time() + 60*5 # 5minutes
 
