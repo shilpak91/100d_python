@@ -16,8 +16,8 @@ driver.get("http://orteil.dashnet.org/experiments/cookie/")
 
 cookie = driver.find_element(By.ID,value="cookie")
 
-timeout = time.time() + 5
-five_min = time.time() + 60*5 # 5minutes
+timeout = time.time() + 8
+five_min = time.time() + 60*20 # 5minutes
 
 #Get upgrade item ids.
 items = driver.find_elements(By.CSS_SELECTOR,"#store div")
@@ -76,7 +76,7 @@ while game_on:
         driver.find_elements(By.ID,to_purchase_id)[0].click()
 
         #Add another 5 seconds until the next check
-        timeout = time.time() + 5
+        timeout = time.time() + 8
 
 
     #After 5 minutes stop the bot and check the cookies per second count.
